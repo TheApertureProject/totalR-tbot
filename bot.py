@@ -26,7 +26,7 @@ def get_why(): # Get a random question from nekos.life
 
 def get_vine(): # Get a random example of def from ud.com
     r = requests.get(url="http://api.urbandictionary.com/v0/random")
-    if r.status_code >= 200 and r.status < 400:
+    if r.status_code >= 200 and r.status_code < 400:
         down = 0
         r2 = json.loads(r.text)
         r3 = r2["list"][0]["example"]
