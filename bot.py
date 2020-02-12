@@ -70,8 +70,8 @@ while True:
     if FINAL == VINE:
         if VINE != 1:
             api.update_status(random.choice(FINAL))
-        else:
-            XLIST = [FACT, WHY]
-            FINAL = random.choice(XLIST)
-            api.update_status(random.choice(FINAL))
+    else:
+        XLIST = [FACT, WHY]
+        FINAL = random.choice(XLIST)
+        api.update_status(random.choice(FINAL))
     time.sleep(TIMER)
