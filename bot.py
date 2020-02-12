@@ -24,7 +24,7 @@ def get_why(): # Get a random question from nekos.life
     WHYY = WHYYY.capitalize() # Uppercase the first letter of the question
     return WHYY
 
-def get_vine():
+def get_vine(): # Get a random example of def from ud.com
     r = requests.get(url="http://api.urbandictionary.com/v0/random")
     r2 = json.loads(r.text)
     r3 = r2["list"][0]["example"]
@@ -36,8 +36,6 @@ def get_vine():
     r4 = r3.replace('[', '')
     r5 = r4.replace(']', '')
     return r5
-
-def get_vine(): # Get a random example of def from ud.com
 
 # Environment vars
 # Access your app's credentials in the Twitter developer dashboard
