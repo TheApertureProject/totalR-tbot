@@ -61,17 +61,16 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 while True:
-    while tweeted != 1:
-        FACT = get_fact()
-        WHY = get_why()
-        VINE = get_vine()
-        XLIST = [FACT, WHY, VINE]
-        FINAL = random.choice(XLIST)
-        if FINAL == VINE:
-            if VINE != 1:
-                api.update_status(random.choice(FINAL))
-            else:
-                XLIST = [FACT, WHY]
-                FINAL = random.choice(XLIST)
-                api.update_status(random.choice(FINAL))
-        time.sleep(TIMER)
+    FACT = get_fact()
+    WHY = get_why()
+    VINE = get_vine()
+    XLIST = [FACT, WHY, VINE]
+    FINAL = random.choice(XLIST)
+    if FINAL == VINE:
+        if VINE != 1:
+            api.update_status(random.choice(FINAL))
+        else:
+            XLIST = [FACT, WHY]
+            FINAL = random.choice(XLIST)
+            api.update_status(random.choice(FINAL))
+    time.sleep(TIMER)
