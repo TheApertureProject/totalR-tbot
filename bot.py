@@ -21,7 +21,7 @@ def get_fact(): # get a random fact from nekos.life
 
 def get_why(): # get a random question from nekos.life
     WHYY = nekos.why()
-    return WHY
+    return WHYY
 
 # env vars
 # access credentials in the twitter dev dashboard
