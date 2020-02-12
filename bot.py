@@ -67,7 +67,7 @@ while True:
         VINE = get_vine()
         XLIST = [FACT, WHY, VINE]
         FINAL = random.choice(XLIST)
-        if FINAL = VINE:
+        if FINAL == VINE:
             if VINE != 1:
                 api.update_status(random.choice(FINAL))
             else:
