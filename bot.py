@@ -60,7 +60,7 @@ api = tweepy.API(auth)
 while True:
     FACT = get_fact()
     WHY = get_why()
-    VINE = get_vine()
+    #VINE = get_vine()
     XLIST = [FACT, WHY]
     FINAL = random.choice(XLIST)
     #    if FINAL == VINE:
