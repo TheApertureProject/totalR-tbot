@@ -7,7 +7,7 @@ print(f"""Welcome to TotalRandom™ !
 """)
 
 try:
-    import nekos, urbandict, os, tweepy, time, logging, random
+    import nekos, urbandict, os, sys, tweepy, time, logging, random
     print('All modules successfully imported.')
 except ImportError:
     print('Failed to import one or more libraries.')
@@ -44,6 +44,6 @@ while True:
     FACT = get_fact()
     WHY = get_why()
     XLIST = [FACT, WHY]
-    CHOICE = random.choice(CLIST)
-    api.update_status(CHOICE)
+    CHOICE = random.choice
+    api.update_status(FACT)
     time.sleep(TIMER)
