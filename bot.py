@@ -7,7 +7,7 @@ print(f"""Welcome to TotalRandom™ !
 """)
 
 try:
-    import nekos, os, sys, tweepy, time, logging, random, requests, json
+    import nekos, os, sys, tweepy, time, logging, random, requests, json, aiohttp
     print('All modules successfully imported.')
 except ImportError:
     print('Failed to import one or more libraries.')
@@ -26,16 +26,22 @@ def get_why(): # Get a random question from nekos.life
 
 def get_vine(): # Get a random example of def from ud.com
     r = requests.get(url="http://api.urbandictionary.com/v0/random")
-    r2 = json.loads(r.text)
-    r3 = r2["list"][0]["example"]
-    if len(r3) > 281:
-        while len(r3) > 281:
-            r = requests.get(url="http://api.urbandictionary.com/v0/random")
-            r2 = json.loads(r.text)
-            r3 = r2["list"][0]["example"]
-    r4 = r3.replace('[', '')
-    r5 = r4.replace(']', '')
-    return r5
+    if r.status_code >= 200 and r.status < 400:
+        down = 0
+        r2 = json.loads(r.text)
+        r3 = r2["list"][0]["example"]
+            if len(r3) > 281:
+                while len(r3) > 281:
+                    r = requests.get(url="http://api.urbandictionary.com/v0/random")
+                    r2 = json.loads(r.text)
+                    r3 = r2["list"][0]["example"]
+                r4 = r3.replace('[', '')
+                r5 = r4.replace(']', '')
+                return r5
+    else:
+        down = 1
+        return down
+        
 
 # Environment vars
 # Access your app's credentials in the Twitter developer dashboard
@@ -55,9 +61,17 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 while True:
-    FACT = get_fact()
-    WHY = get_why()
-    VINE = get_vine()
-    XLIST = [FACT, WHY, VINE]
-    api.update_status(random.choice(XLIST))
-    time.sleep(TIMER)
+    while tweeted != 1:
+        FACT = get_fact()
+        WHY = get_why()
+        VINE = get_vine()
+        XLIST = [FACT, WHY, VINE]
+        FINAL = random.choice(XLIST)
+        if FINAL = VINE:
+            if VINE != 1:
+                api.update_status(random.choice(FINAL))
+            else:
+                XLIST = [FACT, WHY]
+                FINAL = random.choice(XLIST)
+                api.update_status(random.choice(FINAL))
+        time.sleep(TIMER)
