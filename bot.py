@@ -24,21 +24,21 @@ def get_why(): # Get a random question from nekos.life
     WHYY = WHYYY.capitalize() # Uppercase the first letter of the question
     return WHYY
 
-def get_vine(): # Get a random example of def from ud.com
-    r = requests.get(url="http://api.urbandictionary.com/v0/random")
-    if type(r) == int:
-        return 1
-    else:
-        r2 = json.loads(r.text)
-        r3 = r2["list"][0]["example"]
-        if len(r3) > 281:
-            while len(r3) > 281:
-                r = requests.get(url="http://api.urbandictionary.com/v0/random")
-                r2 = json.loads(r.text)
-                r3 = r2["list"][0]["example"]
-            r4 = r3.replace('[', '')
-            r5 = r4.replace(']', '')
-            return r5
+#def get_vine(): # Get a random example of def from ud.com
+#    r = requests.get(url="http://api.urbandictionary.com/v0/random")
+#    if type(r) == int:
+#        return 1
+#    else:
+#        r2 = json.loads(r.text)
+#        r3 = r2["list"][0]["example"]
+#if len(r3) > 281:
+#            while len(r3) > 281:
+#                r = requests.get(url="http://api.urbandictionary.com/v0/random")
+#                r2 = json.loads(r.text)
+#                r3 = r2["list"][0]["example"]
+#            r4 = r3.replace('[', '')
+#            r5 = r4.replace(']', '')
+#            return r5
 
 # Environment vars
 # Access your app's credentials in the Twitter developer dashboard
@@ -61,13 +61,14 @@ while True:
     FACT = get_fact()
     WHY = get_why()
     VINE = get_vine()
-    XLIST = [FACT, WHY, VINE]
+    XLIST = [FACT, WHY]
     FINAL = random.choice(XLIST)
-    if FINAL == VINE:
-        if VINE != 1:
-            api.update_status(random.choice(FINAL))
-    else:
-        XLIST = [FACT, WHY]
-        FINAL = random.choice(XLIST)
-        api.update_status(random.choice(FINAL))
+    #    if FINAL == VINE:
+    #        if VINE != 1:
+    #            api.update_status(random.choice(FINAL))
+    #    else:
+    #        XLIST = [FACT, WHY]
+    #        FINAL = random.choice(XLIST)
+    #        api.update_status(random.choice(FINAL))
+    api.update_status(random.choice(FINAL))
     time.sleep(TIMER)
