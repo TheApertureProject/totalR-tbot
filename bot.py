@@ -26,9 +26,9 @@ def get_why(): # Get a random question from nekos.life
 
 def get_vine(): # Get a random example of def from ud.com
     r = requests.get(url="http://api.urbandictionary.com/v0/random")
-    rstatus = r.status_code
-    if rstatus.status_code >= 200 and rstatus.status_code < 400:
-        down = 0
+    if type(r) == int:
+        return 1
+    else:
         r2 = json.loads(r.text)
         r3 = r2["list"][0]["example"]
         if len(r3) > 281:
@@ -39,10 +39,6 @@ def get_vine(): # Get a random example of def from ud.com
             r4 = r3.replace('[', '')
             r5 = r4.replace(']', '')
             return r5
-    else:
-        down = 1
-        return down
-        
 
 # Environment vars
 # Access your app's credentials in the Twitter developer dashboard
