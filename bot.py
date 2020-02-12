@@ -34,7 +34,7 @@ ACCESS_SECRET = os.environ['ACCESS_SECRET']
 
 # end env vars
 
-TIMER = 10 # wait time between two tweets
+TIMER = 60 * 60 # wait time between two tweets
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
