@@ -19,6 +19,10 @@ def get_fact(): # get a random fact from nekos.life
     FACTS = nekos.fact()
     return FACTS
 
+def get_why(): # get a random question from nekos.life
+    WHYY = nekos.why()
+    return WHY
+
 # env vars
 # access credentials in the twitter dev dashboard
 # set vars in the heroku dashboard
@@ -30,7 +34,7 @@ ACCESS_SECRET = os.environ['ACCESS_SECRET']
 
 # end env vars
 
-TIMER = 2 * 60 * 60 # wait two hours
+TIMER = 2 * 60 * 60 # wait time between two tweets
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
@@ -39,4 +43,7 @@ api = tweepy.API(auth)
 while True:
     FACT = get_fact()
     api.update_status(FACT)
+    time.sleep(TIMER)
+    WHY = get_why()
+    api.update_status(WHY)
     time.sleep(TIMER)
