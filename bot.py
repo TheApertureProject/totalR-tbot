@@ -7,7 +7,7 @@ print(f"""Welcome to TotalRandom™ !
 """)
 
 try:
-    import nekos, urbandict, os, sys, tweepy, time, logging, random
+    import nekos, os, sys, tweepy, time, logging, random
     print('All modules successfully imported.')
 except ImportError:
     print('Failed to import one or more libraries.')
