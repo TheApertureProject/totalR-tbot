@@ -30,14 +30,14 @@ def get_vine(): # Get a random example of def from ud.com
         down = 0
         r2 = json.loads(r.text)
         r3 = r2["list"][0]["example"]
-            if len(r3) > 281:
-                while len(r3) > 281:
-                    r = requests.get(url="http://api.urbandictionary.com/v0/random")
-                    r2 = json.loads(r.text)
-                    r3 = r2["list"][0]["example"]
-                r4 = r3.replace('[', '')
-                r5 = r4.replace(']', '')
-                return r5
+        if len(r3) > 281:
+            while len(r3) > 281:
+                r = requests.get(url="http://api.urbandictionary.com/v0/random")
+                r2 = json.loads(r.text)
+                r3 = r2["list"][0]["example"]
+            r4 = r3.replace('[', '')
+            r5 = r4.replace(']', '')
+            return r5
     else:
         down = 1
         return down
