@@ -44,6 +44,6 @@ while True:
     FACT = get_fact()
     WHY = get_why()
     XLIST = [FACT, WHY]
-    CHOICE = random.choice
-    api.update_status(FACT)
+    CHOICE = random.choice(CLIST)
+    api.update_status(CHOICE)
     time.sleep(TIMER)
