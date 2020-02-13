@@ -34,9 +34,9 @@ def get_vine(): # Get a random example of def from ud.com
                 r = requests.get(url="http://api.urbandictionary.com/v0/random")
                 r2 = json.loads(r.text)
                 r3 = r2["list"][0]["example"]
-            r4 = r3.replace('[', '')
-            r5 = r4.replace(']', '')
-            return r5
+        r4 = r3.replace('[', '')
+        r5 = r4.replace(']', '')
+        return r5
     except Exception as e:
         print(e)
         return 1
