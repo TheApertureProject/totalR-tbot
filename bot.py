@@ -37,7 +37,8 @@ def get_vine(): # Get a random example of def from ud.com
                 r4 = r3.replace('[', '')
                 r5 = r4.replace(']', '')
                 return r5
-    except:
+    except Exception as e:
+        print(e)
         return 1
 
 # Environment vars
