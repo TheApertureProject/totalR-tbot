@@ -64,12 +64,11 @@ while True:
     #VINE = get_vine()
     XLIST = [FACT, WHY]
     FINAL = random.choice(XLIST)
-        if FINAL == VINE:
-            if VINE != 1:
-                api.update_status(FINAL)
-        else:
-            XLIST = [FACT, WHY]
-            FINAL = random.choice(XLIST)
+    if FINAL == VINE:
+        if VINE != 1:
             api.update_status(FINAL)
-    api.update_status(FINAL)
+    else:
+        XLIST = [FACT, WHY]
+        FINAL = random.choice(XLIST)
+        api.update_status(FINAL)
     time.sleep(TIMER)
