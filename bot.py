@@ -62,7 +62,7 @@ while True:
     FACT = get_fact()
     WHY = get_why()
     VINE = get_vine()
-    XLIST = [FACT, WHY]
+    XLIST = [FACT, WHY, VINE]
     FINAL = random.choice(XLIST)
     if FINAL == VINE:
         if VINE != 1:
