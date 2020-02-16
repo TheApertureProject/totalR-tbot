@@ -45,7 +45,7 @@ def get_definition(): # Get a random word & its definition from ud.com
     try:
         r = requests.get(url="http://api.urbandictionary.com/v0/random")
         down = 0
-            r2 = json.loads(r.text)
+        r2 = json.loads(r.text)
         word1 = r2["list"][0]["word"]
         definition1 = r2["list"][0]["definition"]
         full = f"\"{word1}\" — {definition1}"
