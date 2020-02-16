@@ -41,6 +41,32 @@ def get_vine(): # Get a random example of def from ud.com
         print(e)
         return 1
 
+def get_definition(): # Get a random word & its definition from ud.com
+    try:
+        r = requests.get(url="http://api.urbandictionary.com/v0/random")
+        down = 0
+            r2 = json.loads(r.text)
+        word1 = r2["list"][0]["word"]
+        definition1 = r2["list"][0]["definition"]
+        full = f"\"{word1}\" — {definition1}"
+        if len(full) > 281:
+            while len(full) > 281:
+                r = requests.get(url="http://api.urbandictionary.com/v0/random")
+                r2 = json.loads(r.text)
+                word1 = r2["list"][0]["word"]
+                definition1 = r2["list"][0]["definition"]
+                full = f"{word1} — {definition1}"
+            full = full.replace('[', '')
+            full = full.replace(']', '')
+            return full
+        else:
+            full = full.replace('[', '')
+            full = full.replace(']', '')
+            return full
+    except Exception as e:
+        print(e)
+        return 1
+
 # Environment vars
 # Access your app's credentials in the Twitter developer dashboard
 # Set vars in the heroku dashboard
@@ -62,11 +88,15 @@ while True:
     FACT = get_fact()
     WHY = get_why()
     VINE = get_vine()
-    XLIST = [FACT, WHY, VINE]
+    DEF = get_definition()
+    XLIST = [FACT, WHY, VINE, DEF]
     FINAL = random.choice(XLIST)
     if FINAL == VINE:
         if VINE != 1:
             api.update_status(FINAL)
+    elif FINAL == DEF:
+        if DEF != 1:
+            api.update_status(FINAL)    
     else:
         XLIST = [FACT, WHY]
         FINAL = random.choice(XLIST)
